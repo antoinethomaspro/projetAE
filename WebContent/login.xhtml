@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelet">
+	
+<h:head></h:head>
+<h:body>
+	<h1>Bienvenue sur ...</h1>
+	<h2>Se connecter</h2>
+	<h:form id="login">
+		<h:outputLabel for="login" value="Login" />
+		<h:inputText id="login" value="#{user.name}"
+			required="true" requiredMessage="Login required" />
+		<br />
+
+		<h:outputLabel for="password" value="Password" />
+		<h:inputText id="password" value="#{user.password}"
+			required="true"/>
+		<br />
+		<h:commandButton value="Login"
+			action="#{user.connect}"/>
+	</h:form>
+	<p>Vous n'avez pas de compte ?<a href="/Projet/signup.xhtml">Inscrivez-vous!</a></p>
+</h:body>
+</html>

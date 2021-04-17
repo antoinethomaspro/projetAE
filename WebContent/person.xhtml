@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelet">
+	
+<h:head>
+<title>Profil</title>
+</h:head>
+	
+<h:body>
+	<h2><h:outputText value="#{person.name}"/></h2><br/><br/>
+	<span style="white-space: pre-line">
+	<h:outputText value="#{person.show}"/>
+	</span>
+	<h:form>
+		<h:commandButton value="#{person.button}" action="#{person.relationShip}"/>
+	</h:form>
+	
+	<h3>Les personnes que suit <h:outputText value="#{person.name}"/></h3>
+	<span style="white-space: pre-line">
+	<h:outputText value="#{person.following()}"/>
+	</span>
+	
+	<h3>Les personnes que vous avez en commun avec <h:outputText value="#{person.name}"/></h3>
+	<span style="white-space: pre-line">
+	<h:outputText value="#{person.sameRelation()}"/>
+	</span>
+</h:body>
+</html>

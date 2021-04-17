@@ -1,26 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config xmlns="http://java.sun.com/xml/ns/javaee" 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
-    version="2.0">
-   
-   <application>
-   		<locale-config>
-   			<supported-locale>en</supported-locale>
-   			<supported-locale>fr</supported-locale>
-   		</locale-config>
-   </application>
-   <!-- A MODIFIER -->
-   <navigation-rule>
-   <from-view-id>/calculatrice.xhtml</from-view-id>
-   <navigation-case>
-   		<from-outcome>success</from-outcome>
-   		<to-view-id>/calcul.xhtml</to-view-id>
-   </navigation-case>
-   
-      <navigation-case>
-   		<from-outcome>failure</from-outcome>
-   		<to-view-id>/error.xhtml</to-view-id>
-   </navigation-case>
-   </navigation-rule>
- </faces-config> 
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+	<application>
+		<locale-config>
+			<supported-locale>en</supported-locale>
+			<supported-locale>fr</supported-locale>
+		</locale-config>
+	</application>
+	<!-- A MODIFIER -->
+	<navigation-rule>
+		<from-view-id>/signup.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/user_home.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>false</from-outcome>
+			<to-view-id>/signup.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>true</from-outcome>
+			<to-view-id>/user_home.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>false</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user_home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>publish</from-outcome>
+			<to-view-id>/user_home.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>research</from-outcome>
+			<to-view-id>/person.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/person.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/user_home.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config> 
