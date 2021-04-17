@@ -4,25 +4,28 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelet">
 	
-<h:head></h:head>
+<h:head>
+<title>
+Inscription
+</title></h:head>
 <h:body>
 	<h2>Créer un nouveau compte</h2>
 	<h:form id="register">
 		<h:outputLabel for="register" value="Nom d'utilisateur" />
-		<h:inputText id="register" value="#{user.name}"
+		<h:inputText id="register" value="#{user.name}" 
 			required="true" requiredMessage="Le nom d'utilisateur est obligatoire" />
 		<br />
 
-		<h:outputLabel for="password" value="Password" />
-		<h:inputText id="password" value="#{user.password}"
+		<h:outputLabel for="password" value="Mot de passe" />
+		<h:inputSecret id="password" value="#{user.password}"
 			required="true" requiredMessage="Le mot de passe est obligatoire"/>
 		<br />
 		
-		<h:outputLabel for="passwordx" value="Password" />
-		<h:inputText id="passwordx" value="#{user.passwordx}"
+		<h:outputLabel for="passwordx" value="Confirmer le mot de passe" />
+		<h:inputSecret id="passwordx" value="#{user.passwordx}"
 			required="true" requiredMessage="La confirmation du mot de passe est obligatoire"/>
 		<br />
-		<h:commandButton value="Login"
+		<h:commandButton value="S'inscrire"
 			action="#{user.signup}"/>
 	</h:form>
 	

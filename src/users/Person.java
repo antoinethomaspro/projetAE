@@ -58,11 +58,9 @@ public class Person {
 		if(db.userExists(name)) {
 			posts = db.UserProfile(name);
 			for (Post post : posts) {
-				show += post.getText();
 			    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 			    String formattedDate = LocalDateTime.parse(post.getDate()).format(myFormatObj);
-				show += "\n\n";
-				show += formattedDate+"\n";
+			    show += formattedDate+"\n"+post.getText()+"\n\n";
 			}
 			User user = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("person", this);

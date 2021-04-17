@@ -5,16 +5,19 @@
 	xmlns:ui="http://java.sun.com/jsf/facelet"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 	
+<h:head>
+<title>
+<h:outputText value="#{user.username()}"/>
+</title>
+</h:head>	
+
 <h:body>
 	<h2>Bienvenue <h:outputText value="#{user.username()}"/></h2>
 	<p>Que voulez vous faire ?</p>
 	<h:form id="logout">
 	<h:commandButton value="Déconnexion" action="#{user.logout}"/>
-	<h:button value="Ajouter un ami"></h:button>
-	<h:button value="Publier un post"></h:button>
 	</h:form>
 	<br/>
-	<a href="/Projet/login.xhtml">Déconnexion</a>
 	
 	<div style="border: 1px solid #C8C8C8">
 	<p>Rechercher une personne</p>
@@ -34,7 +37,7 @@
 	</h:form>
 	</div>
 	
-	<h3>Posts récemment publiés par vous et vos relations</h3>
+	<h3>Posts que vous avez récemment publiés</h3>
 	
 	<span style="white-space: pre-line">
 	<h:outputText value="#{user.posts()}"/>

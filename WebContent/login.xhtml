@@ -4,21 +4,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelet">
 	
-<h:head></h:head>
+<h:head>
+<title>
+Connexion
+</title>
+</h:head>
 <h:body>
 	<h1>Bienvenue sur ...</h1>
 	<h2>Se connecter</h2>
 	<h:form id="login">
-		<h:outputLabel for="login" value="Login" />
+		<h:outputLabel for="login" value="Nom d'utilisateur" />
 		<h:inputText id="login" value="#{user.name}"
 			required="true" requiredMessage="Login required" />
 		<br />
 
-		<h:outputLabel for="password" value="Password" />
-		<h:inputText id="password" value="#{user.password}"
+		<h:outputLabel for="password" value="Mot de passe" />
+		<h:inputSecret id="password" value="#{user.password}"
 			required="true"/>
 		<br />
-		<h:commandButton value="Login"
+		<h:commandButton value="Connexion"
 			action="#{user.connect}"/>
 	</h:form>
 	<p>Vous n'avez pas de compte ?<a href="/Projet/signup.xhtml">Inscrivez-vous!</a></p>

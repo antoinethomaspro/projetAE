@@ -1,53 +1,36 @@
 package observateur;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
-public class SocialUser {
-	private ArrayList<SocialUser> followers = new ArrayList<SocialUser>();
-	private ArrayList<SocialUser> usersIfollow = new ArrayList<SocialUser>();
-	private String txtIpublish;
-	private String txtIdisplay;
-	private int id;
-	
-	public void add(SocialUser o) {
-		followers.add(o);
-	}
-	
-	public void follow(SocialUser o) {
-		usersIfollow.add(o);
-	}
+import sql.DB;
+import users.User;
 
-	public void removeFollower(SocialUser o) {
-		followers.remove(o);
-		
-	}
+public class SocialUser extends User implements Iobserver{
+	Set<SocialPerson> observables;
 	
-	public void removeUser(SocialUser o) {
-		usersIfollow.remove(o);
-	}
-	
-	public void publish(String txt) {
-		this.txtIpublish = txt;
-	}
-	
-	public String getTxt() {
-		return txtIpublish;
-	}
-
-	public void notifyMyFollowers(int id) {
-		for (SocialUser socialUser : followers) {
-			socialUser.update(id);
+	public SocialUser(User u) {
+		DB db = DB.getInstance();
+		List<String> followed = db.following(u.getName());
+		for (String string : followed) {
+			SocialPerson p = new SocialPerson(this);
+			p.setName(string);
+			p.setPosts(db.getPost(string));
+			observables.add(p);
 		}
 	}
-
-	public void update(int id) {
-		txtIdisplay = usersIfollow.get(id).getTxt();
-		
+	
+	@Override
+	public void update(SocialPerson o, int value) {
+		observables.add(o);
+		display();
 	}
-
+	
 	public void display() {
-		System.out.println(txtIdisplay);
-		
+		for (SocialPerson p : observables) {
+			System.out.println(p.getName()+"a fait "+ p.getValue()+" nouveau(x) post(s).");
+		}
 	}
-
 }

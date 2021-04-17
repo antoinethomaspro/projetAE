@@ -253,6 +253,25 @@ public class DB {
 		}
 	}
 	
+	public List<Post> getPost(String name){
+		int i = getIDbyName(name);
+		String sql = "select text, date from posts where id_user ="+i;
+		ArrayList<Post> list = new ArrayList<>();
+		try {
+			statement = con.createStatement();
+			ResultSet res = statement.executeQuery(sql);
+			while(res.next()) {
+				Post p = new Post();
+				p.setText(res.getString("text"));
+				p.setDate(res.getString("date"));
+				list.add(p);
+			}
+			return list;
+		} catch (SQLException e) {
+			return null;
+		}
+	}
+	
 	public static void main(String[] args) {
 		DB db = DB.getInstance();
 		//if(db.signup(new User("root", "root", "root"))) System.out.println("yes");

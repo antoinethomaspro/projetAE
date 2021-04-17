@@ -9,13 +9,18 @@
 </h:head>
 	
 <h:body>
-	<h2><h:outputText value="#{person.name}"/></h2><br/><br/>
-	<span style="white-space: pre-line">
-	<h:outputText value="#{person.show}"/>
-	</span>
+	<a href="/Projet/user_home.xhtml">Retour</a>
+	<h2><h:outputText value="#{person.name}"/></h2>
+	
 	<h:form>
 		<h:commandButton value="#{person.button}" action="#{person.relationShip}"/>
 	</h:form>
+	
+	<br/>
+	<h3>Posts publiés par <h:outputText value="#{person.name}"/></h3>
+	<span style="white-space: pre-line">
+	<h:outputText value="#{person.show}"/>
+	</span>
 	
 	<h3>Les personnes que suit <h:outputText value="#{person.name}"/></h3>
 	<span style="white-space: pre-line">

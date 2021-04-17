@@ -1,6 +1,6 @@
 package observateur;
 
 public interface Iobserver {
-	public void update();
+	public void update(SocialPerson o, int value);
 
 }
